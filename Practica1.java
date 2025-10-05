@@ -37,7 +37,6 @@ public class Practica1 {
         noCuadrados.addAll(cuadrados);
         if (hay1)
             noCuadrados.remove(1);
-        noCuadrados.addAll(cuadrados);
         cuadrados.clear();
         if (hay1)
             cuadrados.add(1);
@@ -45,8 +44,12 @@ public class Practica1 {
         Iterator<Integer> it1 = noCuadrados.iterator();
         while (it1.hasNext()){
             int e1 = it1.next();
-            if (noCuadrados.contains(e1*e1) && e1 != 1)
-                cuadrados.add(e1);
+            Iterator<Integer> it2 = noCuadrados.iterator();
+            while (it2.hasNext()) {
+                int e2 = it2.next();
+                if (e2 == e1*e1 && e2 != 1 && e1 != 1)
+                    cuadrados.add(e2);
+            }
         }
         noCuadrados.removeAll(cuadrados);
     }
